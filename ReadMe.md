@@ -143,7 +143,7 @@ private fun buildFlexContent(): View {
 
     ```
     dependencies {
-        implementation 'com.github.Vove7:SlidePickerView:lastest_release'
+        implementation 'com.github.Vove7:SlidePickerView:latest_release'
     }
     ```
 
