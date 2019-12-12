@@ -147,4 +147,4 @@ private fun buildFlexContent(): View {
     }
     ```
 
-    the `lastest_release` is ![](https://jitpack.io/v/Vove7/SlidePickerView.svg)
+    the `latest_release` is ![](https://jitpack.io/v/Vove7/SlidePickerView.svg)
