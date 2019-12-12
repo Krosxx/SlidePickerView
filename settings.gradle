@@ -1,0 +1,2 @@
+include ':app', ':slide-picker'
+rootProject.name='SlidePickView'

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.vove7.slide_picker.view.SlideFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/pick_item_selector"
+            android:padding="15dp"
+            android:rotation="-60"
+            android:text="1" />
+
+        <CheckedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/pick_item_selector"
+            android:padding="15dp"
+            android:text="2" />
+
+        <CheckedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/pick_item_selector"
+            android:padding="15dp"
+            android:text="3" />
+
+        <CheckedTextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/pick_item_selector"
+            android:padding="15dp"
+            android:rotation="-50"
+            android:text="4" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="230dp"
+            android:background="@color/colorPrimary" />
+    </cn.vove7.slide_picker.view.SlideFrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <cn.vove7.slide_picker.view.SlideLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2000dp"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <CheckedTextView
+                android:id="@+id/b2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="50dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:rotation="-60"
+                android:text="1" />
+
+            <CheckedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:text="2" />
+
+            <CheckedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="30dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:text="3" />
+
+            <CheckedTextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="50dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:rotation="-50"
+                android:text="4" />
+
+            <CheckedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="20dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:text="5" />
+
+            <CheckedTextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="50dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:rotation="-10"
+                android:text="6" />
+        </cn.vove7.slide_picker.view.SlideLinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
