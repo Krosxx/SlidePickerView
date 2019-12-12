@@ -1,5 +1,5 @@
 
-[![](https://jitpack.io/v/Vove7/SlidePicker.svg)](https://jitpack.io/#Vove7/SlidePicker)
+[![](https://jitpack.io/v/Vove7/SlidePickerView.svg)](https://jitpack.io/#Vove7/SlidePicker)
 
 # Slide Picker
 
@@ -123,3 +123,28 @@ private fun buildFlexContent(): View {
     return container
 }
 ```
+
+
+### 引入
+
+1. 在工程 `build.gradle` 添加
+
+    ```
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+    ```
+
+
+2. 添加依赖
+
+    ```
+    dependencies {
+        implementation 'com.github.Vove7:SlidePickerView:lastest_release'
+    }
+    ```
+
+    the `lastest_release` is ![](https://jitpack.io/v/Vove7/SlidePickerView.svg)
