@@ -33,6 +33,7 @@ fun View.toggleSelected() {
 }
 
 class SlideDelegate(
+    val parentHasScrollable: Boolean = false,
     val onProcess: (target: View?, childIndex: Int, action: Int) -> Unit = { target, _, _ ->
         target?.toggleSelected()
     }
@@ -52,7 +53,7 @@ class SlideDelegate(
         if (event.actionMasked == MotionEvent.ACTION_UP) {
             lastTarget = null
             //恢复父级事件
-            container.parent.requestDisallowInterceptTouchEvent(false)
+            requestAllDisallowInterceptTouchEvent(container, false)
             onProcess(null, -1, event.action)
             return true
         }
@@ -66,11 +67,11 @@ class SlideDelegate(
         }
 
         //若父级为可滚动View
-        if (container.parent.isScrollable) {
+        if (container.parent.isScrollable || parentHasScrollable) {
             if (event.actionMasked == MotionEvent.ACTION_DOWN) {
                 if (target != null) {
                     //拦截父级事件
-                    container.parent.requestDisallowInterceptTouchEvent(true)
+                    requestAllDisallowInterceptTouchEvent(container, true)
                 } else {
                     //此次滚动，不再响应 onProcessTouchEvent
                     return false
@@ -85,6 +86,14 @@ class SlideDelegate(
             lastTarget = null
         }
         return true
+    }
+
+    private fun requestAllDisallowInterceptTouchEvent(view: View, f: Boolean) {
+        var p = view.parent
+        while (p != null) {
+            p.requestDisallowInterceptTouchEvent(f)
+            p = p.parent
+        }
     }
 
     private fun processTarget(target: View, pos: Int, action: Int) {

@@ -3,6 +3,7 @@ package cn.vove7.slide_picker.demo
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val rd = Random()
-        for (i in 0..100) {
+        for (i in 0..300) {
             container.addView(TextView(this).apply {
                 layoutParams = FlexboxLayout.LayoutParams(-2, -2).apply {
                     setPadding(20, 10, 20, 10)
@@ -39,11 +40,18 @@ class MainActivity : AppCompatActivity() {
                 minHeight = 60
                 minWidth = 100
                 setBackgroundResource(R.drawable.bg_text_selector)
-                setTextColor(ContextCompat.getColorStateList(this@MainActivity, R.color.demo_text_colors))
+                setTextColor(
+                    ContextCompat.getColorStateList(
+                        this@MainActivity,
+                        R.color.demo_text_colors
+                    )
+                )
                 text = "*" * rd.nextInt(5)
             })
         }
-        return container
+        val cv = ScrollView(this)
+        cv.addView(container)
+        return cv
     }
 
     var b = false
