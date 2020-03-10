@@ -7,7 +7,8 @@
 
 - 支持旋转View
 - 支持滚动布局
-
+- 支持 View 偏移属性
+- 解决视图重叠问题
 
 ### 使用场景
 
@@ -28,47 +29,18 @@
 
 ### Usage
 
-#### 1. 内部 `View` 继承 `android.widget.Checkable`
-
-可以直接使用 `CheckedTextView` 因为它已经继承了 `Checkable` 。那么指定它的背景资源只需分别设置 `state_checked` 就可以动态改变 `选中和未选中` 样式了。
+#### 1. 内部 `View` 设置状态资源（background/textColor），来确定选中和未选中样式。
 
 ```xml
 <selector>
-    <item android:state_checked="true">
+    <item android:state_selected="true">
         ...
     </item>
-    <item android:state_checked="false">
+    <item android:state_selected="false">
         ...
     </item>
 </selector>
 ```
-
-若使用自定义 View 只需继承 `android.widget.Checkable` ，实现 `setChecked` 函数来控制样式。
-
-示例：
-
-```kotlin
-class ExampleView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr), Checkable {
-    private var isChecked = false
-
-    override fun isChecked(): Boolean = isChecked
-    override fun toggle() = setChecked(!isChecked)
-
-    override fun setChecked(checked: Boolean) {
-        isChecked = checked
-
-        //处理样式
-        if (checked) {
-            setBackgroundColor(Color.RED)
-        } else {
-            setBackgroundColor(Color.BLUE)
-        }
-    }
-}
-```
-
 
 #### 2. 指定父级布局
 
