@@ -3,9 +3,11 @@ package cn.vove7.slide_picker.demo
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.widget.CheckedTextView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import cn.vove7.slide_picker.demo.view.SlideFlexboxLayout
+import cn.vove7.slide_picker.toggleSelected
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         val rd = Random()
         for (i in 0..100) {
-            container.addView(CheckedTextView(this).apply {
+            container.addView(TextView(this).apply {
                 layoutParams = FlexboxLayout.LayoutParams(-2, -2).apply {
                     setPadding(20, 10, 20, 10)
                     setMargins(5, 5, 5, 5)
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                 minHeight = 60
                 minWidth = 100
                 setBackgroundResource(R.drawable.bg_text_selector)
+                setTextColor(ContextCompat.getColorStateList(this@MainActivity, R.color.demo_text_colors))
                 text = "*" * rd.nextInt(5)
             })
         }
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     var b = false
     fun switchContent(view: View?) {
+        content_container.toggleSelected()
         content_container.apply {
             removeAllViews()
             b = !b

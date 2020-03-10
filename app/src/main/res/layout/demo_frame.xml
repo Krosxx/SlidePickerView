@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <CheckedTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -18,9 +18,23 @@
             android:background="@drawable/pick_item_selector"
             android:padding="15dp"
             android:rotation="-60"
-            android:text="1" />
+            android:text="1"
+            android:textColor="@color/demo_text_colors" />
 
-        <CheckedTextView
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/pick_item_selector"
+            android:padding="15dp"
+            android:rotation="-60"
+            android:text="1"
+            android:textColor="@color/demo_text_colors" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
@@ -29,9 +43,10 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/pick_item_selector"
             android:padding="15dp"
-            android:text="2" />
+            android:text="2"
+            android:textColor="@color/demo_text_colors" />
 
-        <CheckedTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -40,9 +55,10 @@
             android:layout_marginTop="100dp"
             android:background="@drawable/pick_item_selector"
             android:padding="15dp"
-            android:text="3" />
+            android:text="3"
+            android:textColor="@color/demo_text_colors" />
 
-        <CheckedTextView
+        <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -52,7 +68,8 @@
             android:background="@drawable/pick_item_selector"
             android:padding="15dp"
             android:rotation="-50"
-            android:text="4" />
+            android:text="4"
+            android:textColor="@color/demo_text_colors" />
 
         <View
             android:layout_width="wrap_content"
@@ -72,7 +89,7 @@
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
-            <CheckedTextView
+            <TextView
                 android:id="@+id/b2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,7 +101,7 @@
                 android:rotation="-60"
                 android:text="1" />
 
-            <CheckedTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
@@ -94,7 +111,7 @@
                 android:padding="15dp"
                 android:text="2" />
 
-            <CheckedTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -104,7 +121,7 @@
                 android:padding="15dp"
                 android:text="3" />
 
-            <CheckedTextView
+            <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -115,7 +132,7 @@
                 android:rotation="-50"
                 android:text="4" />
 
-            <CheckedTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -125,7 +142,7 @@
                 android:padding="15dp"
                 android:text="5" />
 
-            <CheckedTextView
+            <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -135,6 +152,28 @@
                 android:padding="15dp"
                 android:rotation="-10"
                 android:text="6" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="50dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:rotation="-10"
+                android:text="7" />
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="50dp"
+                android:translationY="-70dp"
+                android:background="@drawable/pick_item_selector"
+                android:padding="15dp"
+                android:rotation="-10"
+                android:text="8" />
         </cn.vove7.slide_picker.view.SlideLinearLayout>
     </ScrollView>
 

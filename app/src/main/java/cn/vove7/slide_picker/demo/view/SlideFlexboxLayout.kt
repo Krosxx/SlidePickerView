@@ -3,8 +3,8 @@ package cn.vove7.slide_picker.demo.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
-import android.widget.Checkable
 import cn.vove7.slide_picker.SlideDelegate
+import cn.vove7.slide_picker.toggleSelected
 import com.google.android.flexbox.FlexboxLayout
 
 /**
@@ -28,7 +28,7 @@ class SlideFlexboxLayout @JvmOverloads constructor(
                 MotionEvent.ACTION_DOWN -> {
                     downIndex = p
                     saveStatus()
-                    target?.toggle()
+                    target?.toggleSelected()
                 }
                 MotionEvent.ACTION_UP -> {
                     downIndex = -1
@@ -51,10 +51,7 @@ class SlideFlexboxLayout @JvmOverloads constructor(
         val max = p.coerceAtLeast(downIndex)
 
         fun checkStatus(i: Int, s: Boolean) {
-            val v = getChildAt(i)
-            if (v is Checkable) {
-                v.isChecked = s
-            }
+            getChildAt(i).isSelected = s
         }
 
         for (i in 0 until min) {
@@ -70,10 +67,7 @@ class SlideFlexboxLayout @JvmOverloads constructor(
 
     private fun saveStatus() {
         backupStatus = Array(childCount) {
-            val v = getChildAt(it)
-            if (v is Checkable) {
-                v.isChecked
-            } else false
+            getChildAt(it).isSelected
         }
     }
 

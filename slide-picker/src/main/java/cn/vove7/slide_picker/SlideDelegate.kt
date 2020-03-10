@@ -5,7 +5,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewParent
-import android.widget.Checkable
 import android.widget.ScrollView
 import androidx.core.view.ScrollingView
 import androidx.core.view.children
@@ -20,25 +19,29 @@ import kotlin.math.sin
  * 滑动选择代理
  *
  * 注：
- * - ACTION_DOWN 和 ACTION_MOVE 时 trarget一定非空
- * - ACTION_UP 时 trarget 一定为空
+ * - ACTION_DOWN 和 ACTION_MOVE 时 target一定非空
+ * - ACTION_UP 时 target 一定为空
  *
- * > onProcess action 顺序不一定是以 ACTION_DOWN 开始。因为 ACTION_DOWN 时 不一定得到 trarget
+ * > onProcess action 顺序不一定是以 ACTION_DOWN 开始。因为 ACTION_DOWN 时 不一定得到 target
  *
  * 可能执行顺序（[括号代表可能无此回调]）：(ACTION_DOWN) -> (ACTION_MOVE) -> ACTION_UP
  *
  * @author Vove
  */
+fun View.toggleSelected() {
+    isSelected = !isSelected
+}
+
 class SlideDelegate(
-    val onProcess: (trarget: Checkable?, childIndex: Int, action: Int) -> Unit = { target, _, _ ->
-        target?.toggle()
+    val onProcess: (target: View?, childIndex: Int, action: Int) -> Unit = { target, _, _ ->
+        target?.toggleSelected()
     }
 ) {
     //上次选择元素
-    private var lastTarget: Checkable? = null
+    private var lastTarget: View? = null
 
     //ViewParent是否可滚动
-    private val ViewParent.isScollable: Boolean
+    private val ViewParent.isScrollable: Boolean
         get() = this is ScrollingView || this is ScrollView
 
     /**
@@ -53,7 +56,7 @@ class SlideDelegate(
             onProcess(null, -1, event.action)
             return true
         }
-        val target: Pair<Int, Checkable>? by lazy {
+        val target: Pair<Int, View>? by lazy {
             container.findTarget(
                 PointF(
                     event.x,
@@ -63,7 +66,7 @@ class SlideDelegate(
         }
 
         //若父级为可滚动View
-        if (container.parent.isScollable) {
+        if (container.parent.isScrollable) {
             if (event.actionMasked == MotionEvent.ACTION_DOWN) {
                 if (target != null) {
                     //拦截父级事件
@@ -84,7 +87,7 @@ class SlideDelegate(
         return true
     }
 
-    private fun processTarget(target: Checkable, pos: Int, action: Int) {
+    private fun processTarget(target: View, pos: Int, action: Int) {
         if (target != lastTarget) {
             onProcess(target, pos, action)
             lastTarget = target
@@ -94,21 +97,27 @@ class SlideDelegate(
     /**
      * 搜索手指位置 对应的 PickableView
      */
-    private fun ViewGroup.findTarget(dp: PointF): Pair<Int, Checkable>? {
+    private fun ViewGroup.findTarget(dp: PointF): Pair<Int, View>? {
+        val ts = mutableListOf<Pair<Int, View>>()
         children.forEachIndexed { i, it ->
             //中心点
             val vcp = PointF(
-                ((it.right + it.left) / 2).toFloat(),
-                ((it.bottom + it.top) / 2).toFloat()
+                ((it.right + it.left) / 2).toFloat() + translationX,
+                ((it.bottom + it.top) / 2).toFloat() + translationY
             )
             //旋转
             val rp = dp.rotationWith(vcp, it.rotation) // 这里
 
-            if (it is Checkable && it.isShown && it.pointInView(rp)) {
-                return i to it
+            if (it.isShown && it.pointInView(rp)) {
+                ts.add(i to it)
             }
         }
-        return null
+        return if (ts.isEmpty()) null
+        //面积最小
+        else ts.minBy {
+            val v = it.second
+            v.width * v.height
+        }
     }
 
     /**
@@ -133,7 +142,7 @@ class SlideDelegate(
      * @return p 点是否在 View 视图内
      */
     private fun View.pointInView(p: PointF): Boolean {
-        return p.x in left..right && p.y in top..bottom
+        return p.x - translationX in left..right && p.y - translationY in top..bottom
     }
 
 }
