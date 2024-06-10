@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven-publish'
+
+group = 'com.github.jitpack'
+version = '1.0.3'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -26,4 +30,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.1.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.Krosxx'
+                artifactId = 'SlidePickerView'
+                version = '1.0.3'
+            }
+        }
+    }
 }

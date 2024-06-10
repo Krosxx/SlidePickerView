@@ -1,5 +1,5 @@
 
-[![](https://jitpack.io/v/Vove7/SlidePickerView.svg)](https://jitpack.io/#Vove7/SlidePicker)
+[![](https://jitpack.io/v/Krosxx/SlidePickerView.svg)](https://jitpack.io/#Krosxx/SlidePickerView)
 
 # Slide Picker
 
